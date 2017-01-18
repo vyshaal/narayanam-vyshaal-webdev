@@ -13,6 +13,10 @@ module.exports = function(app)
             process.env.MLAB_PORT + '/' +
             process.env.MLAB_APP_NAME;
     }
+    
+    if(process.env.MONGODB_URI){
+        connectionString = process.env.MONGODB_URI
+    }
 
     var mongoose = require("mongoose");
     mongoose.connect(connectionString);
