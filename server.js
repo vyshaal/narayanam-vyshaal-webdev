@@ -10,7 +10,7 @@ app.use(express.static(__dirname + '/public'));
 
 require ("./test/app.js")(app);
 
-var port = 3000;
+var port = 8000;
 
 app.listen(port,function(err){
 console.log("port starting",err);});
