@@ -2,6 +2,35 @@ input.form-control {
     margin-bottom: 5px;
 }
 
+textarea.form-control {
+    margin-bottom: 5px;
+}
+
+label.form-control {
+    margin-bottom: 5px;
+}
+
 body {
-    padding-top: 36px;
+    padding-top: 56px;
+    padding-bottom: 56px;
+}
+
+ul{
+    padding-top: 10px;
+}
+
+.navbar-default {
+    background-color: #337ab6;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-text {
+    color: white;
+}
+
+.navbar a {
+    color: white;
 }
