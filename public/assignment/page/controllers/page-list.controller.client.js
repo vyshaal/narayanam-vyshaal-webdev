@@ -16,7 +16,11 @@
             vm.websiteId = websiteId;
             vm.userId = userId;
 
-            vm.pages = PageService.findPageByWebsiteId(websiteId);
+            PageService
+                .findPageByWebsiteId(websiteId)
+                .success(function (pages) {
+                    vm.pages = pages;
+                });
         }
         init();
     }
