@@ -28,7 +28,7 @@
         function addWidget(widgetType) {
             var widget = {};
             widget.widgetType = widgetType;
-            widget.editing = true;
+            widget.deletable = true;
             var promise = WidgetService.createWidget(vm.pageId, widget);
             promise.success(function (widget) {
                 $location.url('/user/'+vm.userId+'/website/'+vm.websiteId+'/page/'+vm.pageId+'/widget/'+widget._id);

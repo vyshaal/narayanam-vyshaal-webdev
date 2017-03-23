@@ -40,6 +40,7 @@
 
         vm.deleteWidget = deleteWidget;
         vm.updateWidget = updateWidget;
+        vm.backButtonHandler = backButtonHandler;
 
         function doYouTrustUrl(url) {
             var baseUrl = "https://www.youtube.com/embed/";
@@ -72,7 +73,14 @@
                 else if (!vm.widget.width)
                     vm.widget.width = 100;
 
+            } else if(vm.widget.type == 'TEXT' && !vm.widget.rows) {
+                vm.error = "Rows can not be empty";
+                return
+            } else if (vm.widget.type == 'HTML' && vm.widget.text.trim() == "") {
+                vm.error = "Field can not be empty";
+                return
             }
+            vm.widget.deletable = false;
             var promise = WidgetService.updateWidget(vm.wgId, vm.widget);
             promise
                 .success(function (success) {
@@ -82,6 +90,14 @@
                 .error(function (error) {
                     vm.error = "Unable to update the widget";
                 });
+        }
+
+        function backButtonHandler() {
+            if(vm.widget.deletable){
+                deleteWidget();
+            } else {
+                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+            }
         }
     }
 })();
