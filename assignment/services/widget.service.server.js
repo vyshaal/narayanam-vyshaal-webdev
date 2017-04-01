@@ -1,7 +1,3 @@
-/**
- * Created by vyshaalnarayanam on 3/2/17.
- */
-
 module.exports = function (app, model) {
 
     app.post('/api/page/:pageId/widget', createWidget);
@@ -14,7 +10,7 @@ module.exports = function (app, model) {
     var widgetModel = model.widgetModel;
     var pageModel = model.pageModel;
 
-    var multer = require('multer');
+    var multer = require('multer'); // npm install multer --save
     var upload = multer({
         dest: __dirname+'/../../public/uploads'
     });
@@ -30,10 +26,10 @@ module.exports = function (app, model) {
         var websiteId      = req.body.websiteId;
         var myFile        = req.file;
 
-        var originalname  = myFile.originalname;
-        var filename      = myFile.filename;
-        var path          = myFile.path;
-        var destination   = myFile.destination;
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
 
@@ -43,11 +39,14 @@ module.exports = function (app, model) {
             .findWidgetById(widgetId)
             .then(function (widget) {
                 widget.url = '/uploads/'+filename;
+                //console.log(widget);
+
                 return widgetModel
                     .updateWidget(widgetId, widget);
             })
             .then(function (widget) {
                 var callbackUrl   = "/assignment/#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+                //res.sendStatus(204);
                 res.redirect(callbackUrl);
             }, function (err) {
                 res.sendStatus(500).send(err);
@@ -66,6 +65,7 @@ module.exports = function (app, model) {
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
+
     }
 
     function updateWidget(req, res) {
@@ -80,14 +80,17 @@ module.exports = function (app, model) {
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
+
     }
 
     function getWidgetById(widgetId) {
         widgetModel
             .findWidgetById(widgetId)
             .then(function (widget) {
+                //console.log(widget);
                 return widget;
             }, function (err) {
+                //console.log(err);
                 return null;
             });
     }
@@ -113,11 +116,13 @@ module.exports = function (app, model) {
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
+
     }
 
     function createWidget(req, res) {
         var pageId = req.params.pageId;
         var widget = req.body;
+        //console.log(widget);
         widgetModel
             .createWidget(pageId, widget)
             .then(function (widget) {
@@ -131,16 +136,19 @@ module.exports = function (app, model) {
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
+
     }
 
     function sortWidgets(req, res) {
         var start = req.query.initial;
         var end = req.query.final;
         var pageId = req.params.pageId;
+        //console.log([start, end, pageId]);
 
         pageModel
             .reorderWidget(pageId, start, end)
             .then(function (page) {
+                //console.log(page);
                 res.sendStatus(200);
             }, function (err) {
                 res.sendStatus(500).send(err);

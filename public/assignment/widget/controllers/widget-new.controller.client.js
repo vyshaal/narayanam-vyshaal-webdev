@@ -23,14 +23,17 @@
         }
         init();
 
+        // event handlers
         vm.addWidget = addWidget;
 
-        function addWidget(widgetType) {
+        function addWidget(type) {
             var widget = {};
-            widget.widgetType = widgetType;
+            widget.type = type;
             widget.deletable = true;
+            //console.log('Adding Widget'+type);
             var promise = WidgetService.createWidget(vm.pageId, widget);
             promise.success(function (widget) {
+                //console.log(widget);
                 $location.url('/user/'+vm.userId+'/website/'+vm.websiteId+'/page/'+vm.pageId+'/widget/'+widget._id);
             });
         }

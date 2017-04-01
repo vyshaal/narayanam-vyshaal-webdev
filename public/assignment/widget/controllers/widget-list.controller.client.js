@@ -12,6 +12,7 @@
 
         function init() {
             vm.doYouTrustUrl = doYouTrustUrl;
+            vm.doYouTrustHTML = doYouTrustHTML;
             vm.userId = $routeParams.uid;
             vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
@@ -20,9 +21,13 @@
                 .findWidgetsByPageId(vm.pageId)
                 .success(function (widgets) {
                     vm.widgets = widgets;
+                    //console.log(widgets);
                 });
         }
         init();
+
+        // event handlers
+        // vm.editWidget = editWidget;
 
         function doYouTrustUrl(url) {
             var baseUrl = "https://www.youtube.com/embed/";
@@ -32,5 +37,8 @@
             return $sce.trustAsResourceUrl(baseUrl);
         }
 
+        function doYouTrustHTML(text) {
+            return $sce.trustAsHtml(text);
+        }
     }
 })();

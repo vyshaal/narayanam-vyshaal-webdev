@@ -1,7 +1,3 @@
-/**
- * Created by vyshaalnarayanam on 2/16/17.
- */
-
 (function () {
     angular
         .module("WebAppMaker")
@@ -26,9 +22,16 @@
             WidgetService
                 .findWidgetById(vm.wgId)
                 .success(function (widget) {
+                    //console.log(widget);
                     vm.widget = widget;
+                    //console.log("Controller");
+                    //console.log(vm.widget);
+
+                    // convert width percent string to number for display
                     if (vm.widget.width){
+                        // console.log(vm.widget.width);
                         vm.widget.width = parseInt(vm.widget.width.substring(-1)); // trim the percent symbol
+                        // console.log(vm.widget.width);
                     }
                 })
                 .error(function (error) {
@@ -38,6 +41,7 @@
         }
         init();
 
+        //event handlers
         vm.deleteWidget = deleteWidget;
         vm.updateWidget = updateWidget;
         vm.backButtonHandler = backButtonHandler;
@@ -50,6 +54,13 @@
             return $sce.trustAsResourceUrl(baseUrl);
         }
 
+        function backButtonHandler() {
+            if(vm.widget.deletable){
+                deleteWidget();
+            } else {
+                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+            }
+        }
         function deleteWidget() {
             var promise = WidgetService.deleteWidget(vm.wgId);
             promise
@@ -62,12 +73,12 @@
         }
 
         function updateWidget(){
-            if(vm.widget.widgetType == 'HEADER' && (!vm.widget.text || !vm.widget.size)){
-                vm.error = "Text or Size cannot be empty";
+            if(vm.widget.type == 'HEADING' && (!vm.widget.text || !vm.widget.size)){
+                vm.error = "Text or Size can not be empty";
                 return;
-            } else if((vm.widget.widgetType == 'IMAGE' || vm.widget.widgetType == 'YOUTUBE')) {
+            } else if((vm.widget.type == 'IMAGE' || vm.widget.type == 'YOUTUBE')) {
                 if (!vm.widget.url) {
-                    vm.error = "URL cannot be empty";
+                    vm.error = "URL can not be empty";
                     return;
                 }
                 else if (!vm.widget.width)
@@ -75,12 +86,13 @@
 
             } else if(vm.widget.type == 'TEXT' && !vm.widget.rows) {
                 vm.error = "Rows can not be empty";
-                return
+                return;
             } else if (vm.widget.type == 'HTML' && vm.widget.text.trim() == "") {
                 vm.error = "Field can not be empty";
-                return
+                return;
             }
             vm.widget.deletable = false;
+            //console.log(vm.widget);
             var promise = WidgetService.updateWidget(vm.wgId, vm.widget);
             promise
                 .success(function (success) {
@@ -90,14 +102,6 @@
                 .error(function (error) {
                     vm.error = "Unable to update the widget";
                 });
-        }
-
-        function backButtonHandler() {
-            if(vm.widget.deletable){
-                deleteWidget();
-            } else {
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
-            }
         }
     }
 })();
