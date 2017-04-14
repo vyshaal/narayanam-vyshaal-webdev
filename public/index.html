@@ -1,31 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Web Dev Course Home Page</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Vyshaal Narayanam</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Home</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="https://www.linkedin.com/in/vyshaalnarayanam/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/vyshaal" target="_blank">Github</a></li>
+      </ul>
 
-    <div class="container-fluid">
-        <h1>Web Dev Course Home Page</h1>
-
-        <ul>
-            <li>
-                <a href="project/index.html">Project</a>
-            </li>
-            <li>
-                <a href="assignment/index.html#/login">Assignment</a>
-            </li>
-            <li>
-                <a href="test/index.html">Test MongoDB</a>
-            </li>
-            <li>
-                <a href="https://github.com/vyshaal/narayanam-vyshaal-webdev">GitHub public repository</a>
-            </li>
-        </ul>
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="https://www.linkedin.com/in/vyshaalnarayanam/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/vyshaal" target="_blank">Github</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-</body>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h2 class="header center teal-text text-lighten-2">Vyshaal</h2>
+        <h2 class="header center teal-text text-lighten-2">Narayanam</h2>
+        <h6>&nbsp</h6>
+        <div class="row center">
+          <h4 class="header col s12 light">Full Stack Developer - Data Scientist</h4>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="images/background1.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <a href="assignment/index.html#login" target="_blank"><h2 class="center brown-text"><i class="material-icons">launch</i></h2></a>
+            <h5 class="center">WebAppMaker</h5>
+
+            <p class="light">WebAppMaker enables user to create and modify websites of their own. This project is developed on MEAN framework.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <a href="http://discoveryourplace.herokuapp.com/" target="_blank"><h2 class="center brown-text"><i class="material-icons">launch</i></h2></a>
+            <h5 class="center">NearBy</h5>
+
+            <p class="light">NearBy enables users to browse through near by places like restaurants, hotels, movies. This application was developed on MEAN stack framework using the api of foursquare. Our application also enables users to save their favourite places and revisit them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h4 class="header col s12 light">Graduate Student from Northeastern University</h4>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="images/background2.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>Projects</h4>
+          <div class="row">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">group_work</i></h2>
+                <h5 class="center">Information Retrieval</h5>
+
+                <p class="light">Designed information retrieval models of TF-IDF, Cosine Similarity, Okapi BM25 and Lucene, evaluate and compare their performance levels in terms of retrieval effectiveness.Implemented query expansion using relevance feedback, snippet generation for displaying the results</p>
+              </div>
+            </div>
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">group_work</i></h2>
+                <h5 class="center">Enhance Momentum Trading Strategies in Stocks</h5>
+
+                <p class="light">Using deep learning techniques we can discover features in the time series of stock prices that can successfully predict future returns. We use python package theano for implementation of this system.</p>
+              </div>
+            </div>
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">group_work</i></h2>
+                <h5 class="center">Database design of e-Panchayat</h5>
+                <p class="light">We developed a SQL based database for e-Panchayat, whose purpose is to
+                  provide facilities of government schemes like SGSY, NREGA, water connection, registration services
+                  like birth, marriage, death etc. We optimized the database using all database normalization techniques.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">group_work</i></h2>
+                <h5 class="center">DA-Coder</h5>
+
+                <p class="light">In this project we built a website which provides a coding platform for the students at DA-IICT.
+                  Our aim is that students should gain proficiency in programming languages and coding skills.
+                  We used agile methodology to build the website.</p>
+              </div>
+            </div>
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">group_work</i></h2>
+                <h5 class="center">Amass - Computer Game</h5>
+
+                <p class="light">Our hero, Ralph is supposed to collect maximum number of
+                  mushrooms in the given time. We use Blender to create 3D egg files.
+                  We used python libraries in panda 3d software to position all the egg files
+                  created using blender in the game environment.</p>
+              </div>
+            </div>
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">group_work</i></h2>
+                <h5 class="center">Distributed Task Management System</h5>
+                <p class="light">In this project, using python package celery we create a distributed system. We create local redis-host servers and worker processes in all systems. When we start running task in one system they get distributed between all worker processes.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h4 class="header col s12 light">Actively looking for opportunites</h4>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="images/background3.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="footer-copyright">
+      <div class="container">
+        Copyright © <a class="royalblue-text text-lighten-3">Vyshaal Narayanam</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
 </html>
